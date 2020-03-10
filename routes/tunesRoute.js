@@ -5,7 +5,7 @@ const { SEARCH_QUERY_URL } = require('../urls/urls.json')
 const SEARCH_LIMIT = 25
 
 module.exports = app => {
-    app.post('/collections', (req, res) => {
+    app.post('/tunes', (req, res) => {
         let { query = '' } = req.body
         query = query.replace(' ', '+')
         fetch(`${SEARCH_QUERY_URL}${query}&limit=${SEARCH_LIMIT}`)

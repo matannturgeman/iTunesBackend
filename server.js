@@ -15,8 +15,8 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(cors());
 
-const songsRoute = require('./routes/songsRoute')
-songsRoute(app);
+const tunesRoute = require('./routes/tunesRoute')
+tunesRoute(app);
 
 //insert ssl certificates for https
 const serverOptions = {}
