@@ -1,0 +1,20 @@
+{
+  "name": "iTunesBackend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/matannturgeman/iTunesBackend.git",
+  "author": "matannturgeman <matannturgeman@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.4",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "http": "^0.0.0",
+    "https": "^1.0.0",
+    "node-fetch": "^2.6.0"
+  }
+}
