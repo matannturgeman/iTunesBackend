@@ -1,4 +1,3 @@
-const collectionsRoute = require('./routes/collectionsRoute')
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser')
 const express = require('express')
@@ -16,7 +15,8 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(cors());
 
-collectionsRoute(app);
+const songsRoute = require('./routes/songsRoute')
+songsRoute(app);
 
 //insert ssl certificates for https
 const serverOptions = {}
