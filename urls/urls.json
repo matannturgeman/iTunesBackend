@@ -1,4 +1,5 @@
 {
     "SEARCH_QUERY_URL": "https://itunes.apple.com/search?term=",
-    "": ""
+    "MONGO_URL_DEV": "mongodb+srv://matan_db:110442@cluster0-kdazt.mongodb.net/dev_db?retryWrites=true&w=majority",
+    "MONGO_URL_PROD": "mongodb+srv://matan_db:110442@cluster0-kdazt.mongodb.net/prod_db?retryWrites=true&w=majority"
 }

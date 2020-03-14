@@ -18,6 +18,9 @@ app.use(cors());
 const tunesRoute = require('./routes/tunesRoute')
 tunesRoute(app);
 
+const usersRoute = require('./routes/usersRoute')
+usersRoute(app);
+
 //insert ssl certificates for https
 const serverOptions = {}
 const isDev = process.env.ENV === 'dev'
