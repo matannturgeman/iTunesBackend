@@ -23,8 +23,8 @@ usersRoute(app);
 
 //insert ssl certificates for https
 const serverOptions = {}
-const isDev = process.env.ENV === 'dev'
 
+const isDev = process.env.ENV === 'dev'
 const server = isDev? http.createServer(app) :https.createServer(serverOptions, app)
 
 server.listen(port, () => console.log(`Example app listening on port ${port}!`))

@@ -1,6 +1,7 @@
 const { getUsers, getUserById, login, signUp, updateUser, deleteUser } = require('../services/userService')
 
 module.exports = app => {
+    //user CRUD
     app.get('/users', async (req, res) => {
         const data = await getUsers()
         res.json(data)
@@ -24,6 +25,7 @@ module.exports = app => {
         res.json(data)
     })
 
+    //login functionality
     app.post('/loginById', async (req, res) => {
         const { id } = req.body
         const data = await getUserById(id)
