@@ -1,48 +1,44 @@
-const ObjectId = require('mongodb').ObjectID;
-const mongoService = require('../services/mongoService')
+const { getUsers, getUserById, login, signUp, updateUser, deleteUser } = require('../services/userService')
 
 module.exports = app => {
+    app.get('/users', async (req, res) => {
+        const data = await getUsers()
+        res.json(data)
+    })
+
+    app.get('/user/:userId', async (req, res) => {
+        const { userId } = req.params
+        const data = await getUserById(userId)
+        res.json(data)
+    })
+
+    app.post('/user', async (req, res) => {
+        const { variables } = req.body
+        const data = await updateUser(variables)
+        res.json(data)
+    })
+
+    app.delete('/user/:userId', async (req, res) => {
+        const { userId } = req.params
+        const data = await deleteUser(userId)
+        res.json(data)
+    })
+
     app.post('/loginById', async (req, res) => {
         const { id } = req.body
-        const db = await mongoService.connect()
-        const model = await db.collection('users')
-        model.findOne({ _id: ObjectId(id) }, (err, data) => {
-            console.log('data', data, 'input', { id: ObjectId(id) })
-            if (err) res.json({ error: 'failed' })
-            else if (!data) res.json({ error: 'user-not-found' })
-            else res.json(data)
-        })
+        const data = await getUserById(id)
+        res.json(data)
     })
+
     app.post('/login', async (req, res) => {
         const { email, password } = req.body
-        const db = await mongoService.connect()
-        const model = await db.collection('users')
-        model.findOne({ email, password }, (err, data) => {
-            if (err) res.json({ error: 'failed' })
-            else if (!data) res.json({ error: 'user-not-found' })
-            else res.json({ success: true, user: data })
-        })
+        const data = await login({ email, password })
+        res.json(data)
     })
 
     app.post('/sign-up', async (req, res) => {
         const { email, password } = req.body
-        console.log('email', email)
-        const db = await mongoService.connect()
-        const model = await db.collection('users')
-        model.findOne({ email }, (err, data) => {
-            if (err) res.json({ error: 'failed' })
-            else if (data) res.json({ error: 'user-exist' })
-            else addUser()
-        })
-
-        const addUser = async () => {
-            const db = await mongoService.connect()
-            const model = await db.collection('users')
-            console.log('add new user')
-            model.insertOne({ email, password }, (err, data) => {
-                if (err) res.json({ error: 'failed' })
-                else res.json({ success: true, user: data.ops[0] })
-            })
-        }
+        const data = await signUp({ email, password })
+        res.json(data)
     })
 }
