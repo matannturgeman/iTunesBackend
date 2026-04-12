@@ -4,7 +4,20 @@
       "Bash(node -e \"require\\(''express''\\)\")",
       "Bash(npm install:*)",
       "Bash(npm audit:*)",
-      "Bash(node -e \":*)"
+      "Bash(node -e \":*)",
+      "Bash(npm show:*)",
+      "Bash(netstat -ano)",
+      "Bash(cmd /c \"netstat -ano | findstr :9000\")",
+      "Bash(cmd /c \"netstat -ano | findstr 9000\")",
+      "Bash(cmd /c \"tasklist | findstr node\")",
+      "Bash(cmd /c \"netstat -ano\")",
+      "Bash(powershell -Command \"Get-NetTCPConnection -LocalPort 9000 -ErrorAction SilentlyContinue | Select-Object LocalPort, State, OwningProcess\")",
+      "Bash(powershell -Command \"Get-Process node -ErrorAction SilentlyContinue | Select-Object Id, ProcessName, StartTime\")",
+      "Bash(powershell -Command \"Get-NetTCPConnection -State Listen -ErrorAction SilentlyContinue | Where-Object { $_.LocalPort -eq 9000 } | Select-Object LocalPort, State, OwningProcess\")",
+      "Bash(powershell -Command \"Get-NetTCPConnection -LocalPort 9000 2>$null | Format-List\")",
+      "Bash(powershell -Command \"Get-NetTCPConnection -LocalPort 9000 | Format-List\" 2>/dev/null)",
+      "Bash(powershell -Command \"netstat -ano | Select-String '9000'\")",
+      "Bash(node:*)"
     ]
   }
 }
